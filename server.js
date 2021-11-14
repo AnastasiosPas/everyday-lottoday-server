@@ -1,4 +1,3 @@
-// const users = require ('../client/src/users.js')
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
@@ -17,10 +16,10 @@ const db =  knex({
 
 
 
-// on terminal I type:  
-// PORT=3002 npm start
+// on the terminal:
+// PORT=3001 npm start
 
-const PORT = process.env.PORT;
+const myPORT = process.env.PORT;
 
 
 const app = express();
@@ -120,8 +119,8 @@ app.get('/profile/:id', (req, res) => {
 
 
 
-app.listen(PORT || 3000, ()=> {
-    console.log(`app is running on port ${PORT}`);
+app.listen(myPORT || 3000, ()=> {
+    console.log(`app is running on port ${myPORT}`);
   });
 
 

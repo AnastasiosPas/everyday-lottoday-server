@@ -90,7 +90,7 @@ app.post('/register', (req, res) => {
 app.put('/play', (req, res) => {
     const {username, password, id, lots} = req.body;
         db('users')
-       .where({id})
+     //  .where({'id': id})
         .select('lots').from('users')
         .update({lots})
         .returning('lots')

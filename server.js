@@ -6,11 +6,10 @@ import knex from 'knex';
 const db =  knex({
     client: 'pg',
     connection: {
-      host : 'postgresql-infinite-58070', //our home - localhost
-      //port : 3002,
-      user : 'anastasiospasalis',
-      password : '',
-      database : 'lottodb'
+      host : process.env.DATABASE_URL, //from heroku
+      ssl: {
+        rejectUnauthorized: false
+      }
     }
   });
 

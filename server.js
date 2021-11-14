@@ -6,7 +6,7 @@ import knex from 'knex';
 const db =  knex({
     client: 'pg',
     connection: {
-      host : '127.0.0.1', //our home - localhost
+      host : 'postgresql-infinite-58070', //our home - localhost
       //port : 3002,
       user : 'anastasiospasalis',
       password : '',

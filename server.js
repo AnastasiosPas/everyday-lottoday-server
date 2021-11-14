@@ -37,9 +37,9 @@ app.get('/', (req, res) => {
          res.status(404).json('no such user')
         }
     // res.send(knex.database)
-    // console.log(database);
-    
-});
+    // console.log(database);  
+})
+.catch(err => res.status(400).json('error getting info')) 
 })
 
 app.post('/login', (req, res) => {
@@ -90,8 +90,6 @@ app.post('/register', (req, res) => {
 
 app.put('/play', (req, res) => {
     const {username, password, id, lots} = req.body;
-   
-  
         db('users')
        .where({id})
         .select('lots').from('users')

@@ -6,7 +6,7 @@ import knex from 'knex';
 const db =  knex({
     client: 'pg',
     connection: {
-      host : process.env.DATABASE_URL, //from heroku
+      connectionString : process.env.DATABASE_URL, //from heroku
       ssl: {
         rejectUnauthorized: false
       }

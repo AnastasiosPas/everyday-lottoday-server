@@ -95,7 +95,7 @@ app.put('/play', (req, res) => {
         .update({lots, lotnumbers})
         .returning('lots', 'lotnumbers')
         .then((lots, lotnumbers) => {
-            res.json(lots[0]); res.json([].push(lotnumbers))
+            res.json(lots[0]); res.json(lotnumbers)
         })   .catch(err => res.status(400).json('unable to get lots'))     
 })
 

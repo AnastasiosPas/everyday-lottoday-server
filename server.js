@@ -92,10 +92,10 @@ app.put('/play', (req, res) => {
         db('users')
      //  .where({'id': id})
         .select('lots').from('users')
-        .update({lots, lotnumbers})
-        .returning('lots', 'lotnumbers')
-        .then((lots, lotnumbers) => {
-            res.json(lots[0]); res.json(lotnumbers)
+        .update({lots})
+        .returning('lots')
+        .then(lots => {
+            res.json(lots[0]);
         })   .catch(err => res.status(400).json('unable to get lots'))     
 })
 

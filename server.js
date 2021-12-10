@@ -53,16 +53,15 @@ app.post('/login', (req, res) => {
    .then(data => {
        db.select('*').from('users')
        .where('username', '=', username )
+       .then(currentUser = username)
        .then(user => {
-           res.json(currentUser = user[0])
-           console.log("this is the currentUser", currentUser)
+           res.json(user[0])
+          
        })
     .catch(err => res.status(400).json('error logging in'))   
 })
 .catch(err => res.status(400).json('wrong credentials'))   
 });
-
-
 
 
 app.post('/register', (req, res) => {

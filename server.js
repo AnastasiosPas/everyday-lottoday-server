@@ -91,7 +91,7 @@ app.put('/play', (req, res) => {
     const {username, password, id, lots} = req.body;
         db('users')
         .select('lots').from('users')
-        .where('username', '=', username )
+       // .where('username', '=', username )
         .update({lots})
         .returning('lots')
         .then(lots => {

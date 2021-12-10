@@ -93,7 +93,7 @@ app.post('/register', (req, res) => {
 app.put('/play', (req, res) => {
     const {username, lots} = req.body;
         db('users')
-        .where({ username: username })
+        .where({ username: 'q' })
         .select('lots').from('users')
         .update({lots})
         .returning('lots')

@@ -97,6 +97,8 @@ app.put('/play', (req, res) => {
         .then(user => {
             res.json(user[0])
         })
+        .catch(err => res.status(400).json('error logging in'))   
+      })
         db('users')
         .where({'id': id})
         .select('lots').from('users')

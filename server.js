@@ -26,6 +26,8 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
+let currentUser;
+
 app.get('/', (req, res) => {
     const {name, email, username, password} = req.body;
     db.select('*').from('users')
@@ -52,7 +54,7 @@ app.post('/login', (req, res) => {
        db.select('*').from('users')
        .where('username', '=', username )
        .then(user => {
-           res.json(user[0])
+           res.json(currentUser = user[0])
        })
     .catch(err => res.status(400).json('error logging in'))   
 })
@@ -93,7 +95,7 @@ app.post('/register', (req, res) => {
 app.put('/play', (req, res) => {
     const {username, lots} = req.body;
         db('users')
-        .where({ username: 'q' })
+        .where({ username: currentUser })
         .select('lots').from('users')
         .update({lots})
         .returning('lots')

@@ -89,19 +89,9 @@ app.post('/register', (req, res) => {
 
 app.put('/play', (req, res) => {
     const {username, password, id, lots} = req.body;
-    db.select('password', 'username').from('login')
-    .where('password', '=', password, 'AND', 'username', '=', username)
-    .then(data => {
-        db.select('*').from('users')
-        .where('username', '=', username )
-        .then(user => {
-            res.json(user[0])
-        })
-        .catch(err => res.status(400).json('error logging in'))   
-      })
         db('users')
-        .where({'id': id})
         .select('lots').from('users')
+        .where({'username': username})
         .update({lots})
         .returning('lots')
         .then(lots => {

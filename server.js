@@ -55,6 +55,7 @@ app.post('/login', (req, res) => {
        .where('username', '=', username )
        .then(user => {
            res.json(currentUser = user[0])
+           console.log("this is the currentUser", currentUser)
        })
     .catch(err => res.status(400).json('error logging in'))   
 })

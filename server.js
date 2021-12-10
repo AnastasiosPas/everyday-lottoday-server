@@ -44,7 +44,10 @@ app.get('/', (req, res) => {
 app.post('/login', (req, res) => {
     const {username, password} = req.body;
    db.select('password', 'username').from('login')
-   .where('password', '=', password, 'AND', 'username', '=', username)
+   .where({
+    username: username,
+    password:  password
+  })
    .then(data => {
        db.select('*').from('users')
        .where('username', '=', username )
